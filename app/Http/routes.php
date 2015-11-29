@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::post('/', function () {
     echo '{"Version":1.0,"Server":"Api"}';
 });
 
@@ -34,10 +34,17 @@ $api->version('v1', function ($api) {
     });
     $api->group(['namespace' => 'App\Api\Controllers'],function($api){
         /**
-         * 路由为 : /api/users
+         * 路由为 : /api/request
          */
-        $api->get('users','UserController@index');
-
+        $api->post('user/request','AuthController@register');
         $api->post('user/login','AuthController@authenticate');
+        /**
+         * 使用 JWT-AUTH 认证
+         */
+        $api->group(['middleware' => 'jwt.auth'],function($api){
+            $api->get('user/me','AuthController@getAuthenticatedUser');
+            $api->get('users','UserController@index');
+            $api->get('users/{id}','UserController@show');
+        });
     });
 });

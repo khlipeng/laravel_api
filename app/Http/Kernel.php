@@ -17,7 +17,10 @@ class Kernel extends HttpKernel
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \App\Http\Middleware\VerifyCsrfToken::class,
+        /**
+         * 禁用CSRF
+         */
+        //  \App\Http\Middleware\VerifyCsrfToken::class,
     ];
 
     /**
@@ -27,11 +30,11 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         /**
-         * 作为 Api 接口使用，可以把 auth 和 guest 注释掉
+         * 作为 Api 接口使用，可以把 auth 和 guest /auth.basic 注释掉
          */
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+       // 'auth' => \App\Http\Middleware\Authenticate::class,
+       // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+       // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
         'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class
     ];

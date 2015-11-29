@@ -9,6 +9,6 @@ namespace App\Api\Controllers;
 use App\Http\Controllers\Controller;
 use Dingo\Api\Routing\Helpers;
 
-class BaseControllers extends Controller{
+class BaseController extends Controller{
     use Helpers;
 }

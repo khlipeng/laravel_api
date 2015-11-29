@@ -10,7 +10,7 @@ namespace App\Api\Controllers;
 use App\Api\Transformers\UserTransformer;
 use App\Api\Model\User;
 
-class UserControllers extends BaseControllers{
+class UserController extends BaseController{
     public function index(){
         $user = User::all();
         return $this->collection($user, new UserTransformer());

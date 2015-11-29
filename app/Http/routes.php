@@ -30,12 +30,14 @@ $api->version('v1', function ($api) {
         /**
          * 路由为 : /api/v1/users
          */
-        $api->get('users','UserControllers@index');
+        $api->get('users','UserController@index');
     });
     $api->group(['namespace' => 'App\Api\Controllers'],function($api){
         /**
          * 路由为 : /api/users
          */
-        $api->get('users','UserControllers@index');
+        $api->get('users','UserController@index');
+
+        $api->post('user/login','AuthController@authenticate');
     });
 });

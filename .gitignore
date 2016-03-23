@@ -1,0 +1,11 @@
+/vendor
+/packages
+/.idea
+/node_modules
+/storage
+/bootstrap/cache
+Homestead.yaml
+Homestead.json
+composer.lock
+.env
+*_bak
